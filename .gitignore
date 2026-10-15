@@ -5,7 +5,6 @@ xcuserdata/
 DerivedData/
 .build/
 .swiftpm/
-*.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/
 # Local secrets (API keys) — never commit
 Examples/ios/NWaysSample/Secrets.xcconfig
 .env

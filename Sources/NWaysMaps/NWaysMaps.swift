@@ -103,7 +103,7 @@ public enum NWaysMaps {
         else { return nil }
         let base = normalizeBaseURL(baseURL)
         guard var c = URLComponents(url: base, resolvingAgainstBaseURL: false) else { return nil }
-        c.path = (c.path.hasSuffix("/") ? String(c.path.dropLast()) : c.path) + "/maps/v1/styles/\(styleID).json"
+        c.path = (c.path.hasSuffix("/") ? String(c.path.dropLast()) : c.path) + "/\(NWaysPaths.styles)/\(styleID).json"
         if l != "en" { c.queryItems = [URLQueryItem(name: "lang", value: l)] }
         return c.url
     }

@@ -1,0 +1,87 @@
+{
+  "elements": [
+    {
+      "originIndex": 0,
+      "destinationIndex": 0,
+      "status": "OK",
+      "durationS": 788,
+      "distanceM": 7881
+    },
+    {
+      "originIndex": 0,
+      "destinationIndex": 1,
+      "status": "OK",
+      "durationS": 1035,
+      "distanceM": 10349
+    },
+    {
+      "originIndex": 0,
+      "destinationIndex": 2,
+      "status": "OK",
+      "durationS": 2817,
+      "distanceM": 28171
+    },
+    {
+      "originIndex": 1,
+      "destinationIndex": 0,
+      "status": "OK",
+      "durationS": 791,
+      "distanceM": 7915
+    },
+    {
+      "originIndex": 1,
+      "destinationIndex": 1,
+      "status": "OK",
+      "durationS": 1038,
+      "distanceM": 10385
+    },
+    {
+      "originIndex": 1,
+      "destinationIndex": 2,
+      "status": "OK",
+      "durationS": 2820,
+      "distanceM": 28195
+    }
+  ],
+  "origins": [
+    {
+      "type": "Point",
+      "coordinates": [
+        3.472,
+        6.4474
+      ]
+    },
+    {
+      "type": "Point",
+      "coordinates": [
+        3.47225,
+        6.44738
+      ]
+    }
+  ],
+  "destinations": [
+    {
+      "type": "Point",
+      "coordinates": [
+        3.42,
+        6.43
+      ]
+    },
+    {
+      "type": "Point",
+      "coordinates": [
+        3.4,
+        6.45
+      ]
+    },
+    {
+      "type": "Point",
+      "coordinates": [
+        3.35,
+        6.6
+      ]
+    }
+  ],
+  "mode": "drive",
+  "attribution": "© OpenStreetMap contributors, N-Ways"
+}

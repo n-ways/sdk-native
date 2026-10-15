@@ -1,0 +1,59 @@
+{
+  "places": [
+    {
+      "id": "ov:860b85b1-e8dd-488d-bb83-e8e65a6965e1",
+      "name": "Access Bank",
+      "category": "bank",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          3.491648,
+          6.438141
+        ]
+      },
+      "formattedAddress": "999C Danmole Street, Victoria Island",
+      "plusCode": "6FR5CFQR+7M2",
+      "country": "NG",
+      "distanceM": 2403,
+      "businessStatus": "OPERATIONAL",
+      "attribution": "© OpenStreetMap contributors, N-Ways"
+    },
+    {
+      "id": "osm:w641988210",
+      "name": "LOTUS Bank",
+      "category": "bank",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          3.430299,
+          6.431439
+        ]
+      },
+      "formattedAddress": "Plot 100 Adetokunbo Ademola Crescent, AP Plaza, Wuse II",
+      "plusCode": "6FR5CCJJ+H4F",
+      "country": "NG",
+      "distanceM": 4939,
+      "businessStatus": "OPERATIONAL",
+      "attribution": "© OpenStreetMap contributors, N-Ways"
+    },
+    {
+      "id": "osm:w775899029",
+      "name": "UBA",
+      "category": "bank",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          3.469683,
+          6.447399
+        ]
+      },
+      "plusCode": "6FR5CFW9+XV3",
+      "country": "NG",
+      "distanceM": 256,
+      "businessStatus": "OPERATIONAL",
+      "attribution": "© OpenStreetMap contributors, N-Ways"
+    }
+  ],
+  "nextPageToken": "bzoz",
+  "attribution": "© OpenStreetMap contributors, N-Ways"
+}

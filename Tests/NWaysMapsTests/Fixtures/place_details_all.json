@@ -1,0 +1,23 @@
+{
+  "id": "osm:n2987189855",
+  "name": "Shoprite",
+  "category": "supermarket",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      3.451335,
+      6.43649
+    ]
+  },
+  "formattedAddress": "Bisway Street, Lagos",
+  "plusCode": "6FR5CFP2+HGW",
+  "country": "NG",
+  "businessStatus": "OPERATIONAL",
+  "attribution": "© OpenStreetMap contributors, N-Ways",
+  "phone": "+234 90 1400 0001",
+  "website": "https://shoprite.ng/",
+  "openingHours": {
+    "text": "Mo-Su 09:00-21:00",
+    "source": "listed"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "ghanapost:GA-183-8164",
+  "name": "GA-183-8164",
+  "type": "ghanapost",
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      -0.207658,
+      5.54226
+    ]
+  },
+  "formattedAddress": "General Post Office, Greater Accra Region",
+  "ghanaPost": "GA-183-8164",
+  "plusCode": "6CQXGQRR+WW4",
+  "country": "GH",
+  "attribution": "© OpenStreetMap contributors"
+}

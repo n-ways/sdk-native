@@ -70,72 +70,150 @@ final class ClientTests: XCTestCase {
     private var lastURL: URLComponents { URLComponents(url: MockURLProtocol.seen.last!.url!, resolvingAgainstBaseURL: false)! }
     private func query(_ name: String) -> String? { lastURL.queryItems?.first { $0.name == name }?.value }
 
+    private func body() throws -> JSONValue { try JSONDecoder().decode(JSONValue.self, from: MockURLProtocol.seenBodies.last!) }
+
     func testGeocode() async throws {
         answer(200, try fixture("geocode"))
-        let res = try await client.geocode("Allen Avenue + Co", limit: 5, near: NWaysLatLng(lat: 6.6, lng: 3.35))
-        XCTAssertEqual(res.results.first?.name, "Ikeja")
-        XCTAssertEqual(lastURL.path, "/v1/geocode")
-        XCTAssertEqual(query("q"), "Allen Avenue + Co")
+        let res = try await client.geocode("Ikeja + Co", near: NWaysLatLng(lat: 6.6, lng: 3.35), country: ["NG", "GH"], limit: 5,
+                                           lang: "fr", fields: ["id", "name"])
+        XCTAssertEqual(res.results.count, 4)
+        XCTAssertEqual(lastURL.path, "/maps/v1/geocode")
+        XCTAssertEqual(query("q"), "Ikeja + Co")
         XCTAssertTrue(lastURL.percentEncodedQuery!.contains("%2B"))
+        XCTAssertEqual(query("near"), "6.6,3.35")
+        XCTAssertEqual(query("country"), "NG,GH")
         XCTAssertEqual(query("limit"), "5")
-        XCTAssertEqual(query("lat"), "6.6")
-        XCTAssertEqual(query("lng"), "3.35")
+        XCTAssertEqual(query("lang"), "fr")
+        XCTAssertEqual(query("fields"), "id,name")
         let req = MockURLProtocol.seen.last!
+        XCTAssertEqual(req.httpMethod, "GET")
         XCTAssertEqual(req.value(forHTTPHeaderField: "X-NWays-Api-Key"), "k")
         XCTAssertEqual(req.value(forHTTPHeaderField: "X-Ios-Bundle-Identifier"), "ng.nways.sample")
         XCTAssertEqual(req.value(forHTTPHeaderField: "X-NWays-Sdk"), "ios/1.0.0")
     }
 
-    func testReverseNothingThere() async throws {
-        answer(204, Data(), headers: [:])
-        let r = try await client.reverse(NWaysLatLng(lat: 6.4281, lng: 3.4219))
-        XCTAssertNil(r)
-        XCTAssertEqual(lastURL.path, "/v1/reverse")
-        XCTAssertEqual(query("lat"), "6.4281")
+    func testReverse() async throws {
+        answer(200, try fixture("reverse_ng"))
+        let r = try await client.reverse(NWaysLatLng(lat: 6.4474, lng: 3.472), radius: 150, lang: "en")
+        XCTAssertEqual(r.postcode?.code, "LA08A09DB09")
+        XCTAssertEqual(lastURL.path, "/maps/v1/reverse")
+        XCTAssertEqual(query("lat"), "6.4474")
+        XCTAssertEqual(query("lng"), "3.472")
+        XCTAssertEqual(query("radius"), "150")
     }
 
-    func testPostcodePath() async throws {
+    func testPostcodeAndGhanaPostPaths() async throws {
         answer(200, try fixture("postcode"))
-        let p = try await client.postcode("ABC123")
-        XCTAssertEqual(p.lgaName, "Ikeja")
-        XCTAssertEqual(lastURL.path, "/v1/postcodes/ABC123")
+        let p = try await client.postcode("LA08A09DB09")
+        XCTAssertEqual(p.components?.lgaName, "Eti-Osa")
+        XCTAssertEqual(lastURL.path, "/maps/v1/postcodes/LA08A09DB09")
+        answer(200, try fixture("ghanapost"))
+        let g = try await client.ghanaPost("GA-183-8164")
+        XCTAssertEqual(g.ghanaPost, "GA-183-8164")
+        XCTAssertEqual(lastURL.path, "/maps/v1/ghanapost/GA-183-8164")
+    }
+
+    func testAutocomplete() async throws {
+        answer(200, try fixture("autocomplete"))
+        let res = try await client.autocomplete("ikeja ci", session: "3f2a9c1e-session", near: NWaysLatLng(lat: 6.6, lng: 3.35),
+                                                types: ["business", "place"], limit: 5)
+        XCTAssertEqual(res.results.count, 2)
+        XCTAssertEqual(lastURL.path, "/maps/v1/autocomplete")
+        XCTAssertEqual(query("session"), "3f2a9c1e-session")
+        XCTAssertEqual(query("types"), "business,place")
+    }
+
+    func testValidateAddress() async throws {
+        answer(200, try fixture("validate_postcode"))
+        let v = try await client.validateAddress("LA 08 A09 DB 09", country: "NG", near: NWaysLatLng(lat: 6.45, lng: 3.47), lang: "en")
+        XCTAssertEqual(v.verdict?.status, "VALID")
+        XCTAssertEqual(MockURLProtocol.seen.last?.httpMethod, "POST")
+        XCTAssertEqual(lastURL.path, "/maps/v1/addresses/validate")
+        let b = try body()
+        XCTAssertEqual(b["address"]?.stringValue, "LA 08 A09 DB 09")
+        XCTAssertEqual(b["country"]?.stringValue, "NG")
+        XCTAssertEqual(b["near"]?["lat"]?.doubleValue, 6.45)
     }
 
     func testPlaces() async throws {
-        answer(200, try fixture("places"))
-        let res = try await client.places(near: NWaysLatLng(lat: 6.6018, lng: 3.3515), category: "pharmacy", radius: 1500, limit: 10)
-        XCTAssertEqual(res.places.count, 1)
-        XCTAssertEqual(lastURL.path, "/v1/places")
-        XCTAssertEqual(query("category"), "pharmacy")
-        XCTAssertEqual(query("radius"), "1500")
-        XCTAssertEqual(query("limit"), "10")
+        answer(200, try fixture("places_nearby"))
+        let res = try await client.placesNearby(NWaysLatLng(lat: 6.4474, lng: 3.472), category: "bank", radius: 5000, limit: 3,
+                                                pageToken: "abc", fields: ["name", "phone"])
+        XCTAssertEqual(res.nextPageToken, "bzoz")
+        XCTAssertEqual(lastURL.path, "/maps/v1/places/nearby")
+        XCTAssertEqual(query("category"), "bank")
+        XCTAssertEqual(query("radius"), "5000")
+        XCTAssertEqual(query("pageToken"), "abc")
+        XCTAssertEqual(query("fields"), "name,phone")
+        answer(200, try fixture("place_details_all"))
+        let p = try await client.place("osm:n2987189855")
+        XCTAssertEqual(p.name, "Shoprite")
+        XCTAssertEqual(lastURL.path, "/maps/v1/places/osm:n2987189855")
     }
 
-    func testRoutesBody() async throws {
-        answer(200, try fixture("routes"))
-        let res = try await client.routes(from: NWaysLatLng(lat: 6.6018, lng: 3.3515), to: NWaysLatLng(lat: 6.4541, lng: 3.3947), mode: .motorcycle)
-        XCTAssertEqual(res.routes.first?.geometry.first, NWaysLatLng(lat: 6.6018, lng: 3.3515))
-        let req = MockURLProtocol.seen.last!
-        XCTAssertEqual(req.httpMethod, "POST")
-        XCTAssertEqual(lastURL.path, "/v1/routes")
-        let body = try JSONDecoder().decode(JSONValue.self, from: MockURLProtocol.seenBodies.last!)
-        XCTAssertEqual(body["mode"]?.stringValue, "motorcycle")
-        XCTAssertEqual(body["alternates"]?.intValue, 0)
-        XCTAssertEqual(body["from"]?["lat"]?.doubleValue, 6.6018)
-        XCTAssertEqual(body["to"]?["lng"]?.doubleValue, 3.3947)
-        XCTAssertNil(body["stops"])
+    func testRouteBody() async throws {
+        answer(200, try fixture("routes_drive"))
+        let res = try await client.route(
+            origin: .at(lat: 6.4474, lng: 3.472), destination: .postcode("LA08A09DB10"), mode: .drive,
+            intermediates: [.ghanaPost("GA-183-8164"), .plusCode("6FR5CFWC+XR6")], routingPreference: .trafficAware,
+            departAt: Date(timeIntervalSince1970: 0), avoid: [.tolls, .badRoads], fares: true)
+        XCTAssertEqual(res.routes.first?.geometry.count, 16)
+        XCTAssertEqual(MockURLProtocol.seen.last?.httpMethod, "POST")
+        XCTAssertEqual(lastURL.path, "/maps/v1/routes/compute")
+        let b = try body()
+        XCTAssertEqual(b["origin"]?["lat"]?.doubleValue, 6.4474)
+        XCTAssertEqual(b["destination"]?["postcode"]?.stringValue, "LA08A09DB10")
+        XCTAssertEqual(b["intermediates"]?[0]?["ghanaPost"]?.stringValue, "GA-183-8164")
+        XCTAssertEqual(b["intermediates"]?[1]?["plusCode"]?.stringValue, "6FR5CFWC+XR6")
+        XCTAssertEqual(b["mode"]?.stringValue, "drive")
+        XCTAssertEqual(b["routingPreference"]?.stringValue, "traffic_aware")
+        XCTAssertEqual(b["departAt"]?.stringValue, "1970-01-01T00:00:00Z")
+        XCTAssertEqual(b["avoid"], .array([.string("tolls"), .string("bad_roads")]))
+        XCTAssertEqual(b["fares"]?.boolValue, true)
+        XCTAssertNil(b["alternatives"])
+        XCTAssertNil(b["lang"])
     }
 
-    func testFaresPassParamsThrough() async throws {
+    func testMatrix() async throws {
+        answer(200, try fixture("matrix"))
+        let m = try await client.matrix(origins: [.at(lat: 6.4474, lng: 3.472), .postcode("LA08A09DB09")],
+                                        destinations: [.at(lat: 6.43, lng: 3.42), .at(lat: 6.45, lng: 3.4), .at(lat: 6.6, lng: 3.35)],
+                                        mode: .bicycle)
+        XCTAssertEqual(m.element(origin: 0, destination: 1)?.durationS, 1035)
+        XCTAssertEqual(lastURL.path, "/maps/v1/routes/matrix")
+        let b = try body()
+        XCTAssertEqual(b["origins"]?.arrayValue?.count, 2)
+        XCTAssertEqual(b["destinations"]?.arrayValue?.count, 3)
+        XCTAssertEqual(b["mode"]?.stringValue, "bicycle")
+    }
+
+    func testFares() async throws {
         answer(200, try fixture("fares"))
-        let f = try await client.fareEstimate(["from": "6.6018,3.3515", "to": "6.5244,3.3792", "mode": "keke,taxi"])
+        let f = try await client.fares(from: NWaysLatLng(lat: 6.4474, lng: 3.472), to: NWaysLatLng(lat: 6.6018, lng: 3.3515),
+                                       modes: ["taxi", "okada"], at: Date(timeIntervalSince1970: 0), extra: ["rain": "true"])
         XCTAssertEqual(f.currency, "NGN")
-        XCTAssertEqual(lastURL.path, "/v1/fares/estimate")
-        XCTAssertEqual(query("mode"), "keke,taxi")
-        XCTAssertEqual(query("from"), "6.6018,3.3515")
+        XCTAssertEqual(lastURL.path, "/maps/v1/fares/estimate")
+        XCTAssertEqual(query("from"), "6.4474,3.472")
+        XCTAssertEqual(query("to"), "6.6018,3.3515")
+        XCTAssertEqual(query("mode"), "taxi,okada")
+        XCTAssertEqual(query("at"), "1970-01-01T00:00:00Z")
+        XCTAssertEqual(query("rain"), "true")
     }
 
     func testErrorEnvelopeThrown() async throws {
+        answer(400, try fixture("postcode_invalid"))
+        do {
+            _ = try await client.postcode("nope")
+            XCTFail("expected NWaysError")
+        } catch let e as NWaysError {
+            XCTAssertEqual(e.httpStatus, 400)
+            XCTAssertEqual(e.status, "INVALID_ARGUMENT")
+            XCTAssertEqual(e.reason, "POSTCODE_INVALID")
+            XCTAssertTrue(e.message.hasPrefix("That isn't a NIPOST postcode"))
+        }
+    }
+
+    func testQuotaErrorHonoursRetryAfter() async throws {
         answer(429, Data(#"{"error":{"code":429,"status":"RESOURCE_EXHAUSTED","reason":"QUOTA_EXCEEDED","message":"Daily quota used."}}"#.utf8),
                headers: ["Content-Type": "application/json", "Retry-After": "60"])
         do {
@@ -145,17 +223,18 @@ final class ClientTests: XCTestCase {
             XCTAssertEqual(e.httpStatus, 429)
             XCTAssertEqual(e.reason, "QUOTA_EXCEEDED")
             XCTAssertEqual(e.retryAfter, 60)
+            XCTAssertTrue(e.isRetryable)
         }
     }
 
-    func testOlderErrorThrown() async throws {
-        answer(422, Data(#"{"error":"no route","code":"no_route"}"#.utf8))
+    func testRelayedRouteErrorThrown() async throws {
+        answer(422, Data(#"{"error":{"code":422,"status":"FAILED_PRECONDITION","reason":"NO_ROUTE","message":"No route."}}"#.utf8))
         do {
-            _ = try await client.routes(from: NWaysLatLng(lat: 6, lng: 3), to: NWaysLatLng(lat: 6.1, lng: 3.1))
+            _ = try await client.route(origin: .at(lat: 6, lng: 3), destination: .at(lat: 6.1, lng: 3.1))
             XCTFail("expected NWaysError")
         } catch let e as NWaysError {
             XCTAssertEqual(e.httpStatus, 422)
-            XCTAssertEqual(e.code, "no_route")
+            XCTAssertEqual(e.reason, "NO_ROUTE")
         }
     }
 

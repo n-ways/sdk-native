@@ -1,0 +1,83 @@
+{
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      3.472,
+      6.4474
+    ]
+  },
+  "plusCode": "6FR5CFWC+XR6",
+  "country": {
+    "code": "NG",
+    "name": "Nigeria",
+    "nameFr": "Nigéria"
+  },
+  "region": {
+    "code": "NG-LA",
+    "name": "Lagos State",
+    "nameFr": "État de Lagos"
+  },
+  "formattedAddress": "12 Admiralty Way, Lekki, Lagos State, Nigeria",
+  "postcode": {
+    "code": "LA08A09DB09",
+    "display": "LA 08 A09 DB 09",
+    "components": {
+      "state": "LA",
+      "stateName": "Lagos",
+      "lga": "08",
+      "lgaName": "Eti-Osa",
+      "district": "A09",
+      "area": "DB",
+      "building": "09"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        3.4721,
+        6.4475
+      ]
+    },
+    "name": "Test House",
+    "address": "12 Admiralty Way, Lekki",
+    "buildingType": "house",
+    "entrances": [
+      {
+        "location": {
+          "type": "Point",
+          "coordinates": [
+            3.47225,
+            6.44738
+          ]
+        },
+        "kind": "gate",
+        "verified": true
+      }
+    ],
+    "plusCode": "6FR5CFXC+2R5",
+    "country": "NG",
+    "source": "osm",
+    "estimated": false,
+    "distanceM": 16,
+    "attribution": "NIPOST postcodes; © OpenStreetMap contributors, N-Ways"
+  },
+  "ghanaPost": null,
+  "nearest": {
+    "id": "osm:w568364473",
+    "name": "Brasas'r Place",
+    "type": "landmark",
+    "category": "shopping",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        3.471963,
+        6.447436
+      ]
+    },
+    "formattedAddress": "Eti-Osa, Lagos",
+    "plusCode": "6FR5CFWC+XQG",
+    "country": "NG",
+    "distanceM": 6,
+    "attribution": "© OpenStreetMap contributors, N-Ways"
+  },
+  "attribution": "© OpenStreetMap contributors, N-Ways"
+}

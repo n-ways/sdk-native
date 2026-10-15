@@ -1,0 +1,99 @@
+{
+  "country": "NG",
+  "region": "NG-LA",
+  "currency": "NGN",
+  "distanceM": 18033,
+  "durationS": 2951,
+  "night": false,
+  "estimates": [
+    {
+      "mode": "taxi",
+      "currency": "NGN",
+      "low": 8150,
+      "typical": 11700,
+      "high": 15200,
+      "text": "₦8,150–15,200",
+      "perPerson": false,
+      "charter": true,
+      "rush": true,
+      "basis": "guide",
+      "reports": 0,
+      "durationS": 2951,
+      "openingOffer": 7750,
+      "sources": [
+        "https://techpoint.africa/news/bolt-increases-prices-in-lagos-by-112/",
+        "https://newscentraltv.com/okada-fares-rise-131-in-tinubus-three-years/"
+      ]
+    },
+    {
+      "mode": "shared_taxi",
+      "currency": "NGN",
+      "low": 1100,
+      "typical": 1500,
+      "high": 1900,
+      "text": "₦1,100–1,900",
+      "perPerson": true,
+      "charter": false,
+      "rush": true,
+      "basis": "guide",
+      "reports": 0,
+      "durationS": 3546,
+      "sources": [
+        "https://nuj.ng/view-news.php?id=424",
+        "https://legit.ng/1700089-petrol-price-hits-n1080litre-major-nigerian-city-queues-return-transport-fares-surge.html"
+      ]
+    },
+    {
+      "mode": "bus",
+      "currency": "NGN",
+      "low": 780,
+      "typical": 1100,
+      "high": 1500,
+      "text": "₦780–1,500",
+      "perPerson": true,
+      "charter": false,
+      "rush": true,
+      "basis": "guide",
+      "reports": 0,
+      "durationS": 4611,
+      "sources": [
+        "https://businessday.ng/transport/article/lamata-releases-new-brt-fares-following-13-increase/",
+        "https://api.nannews.ng/?p=2351"
+      ]
+    },
+    {
+      "mode": "ridehail",
+      "service": "Bolt",
+      "currency": "NGN",
+      "low": 8150,
+      "typical": 10950,
+      "high": 13700,
+      "text": "₦8,150–13,700",
+      "perPerson": false,
+      "charter": true,
+      "rush": true,
+      "basis": "guide",
+      "reports": 0,
+      "durationS": 3251,
+      "sources": [
+        "https://techpoint.africa/news/bolt-increases-prices-in-lagos-by-112/",
+        "https://newscentraltv.com/okada-fares-rise-131-in-tinubus-three-years/"
+      ]
+    }
+  ],
+  "notAllowed": [
+    {
+      "mode": "okada",
+      "ban": {
+        "id": "ng-la-2022-central",
+        "zone": "Eti-Osa",
+        "scope": "commercial",
+        "since": "2022-06-01",
+        "source": "https://tribuneonlineng.com/breaking-sanwo-olu-announces-total-ban-of-okada-in-ikeja-apapa-lagos-island-mainland-others-from-june-1/",
+        "where": "origin"
+      },
+      "text": "No okada: okadas are banned in Eti-Osa."
+    }
+  ],
+  "attribution": "N-Ways fares: riders' reports and published sources"
+}

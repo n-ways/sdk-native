@@ -1,0 +1,41 @@
+{
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      -0.187,
+      5.6037
+    ]
+  },
+  "plusCode": "6CQXJR37+F6J",
+  "country": {
+    "code": "GH",
+    "name": "Ghana",
+    "nameFr": "Ghana"
+  },
+  "region": {
+    "code": "GH-AA",
+    "name": "Greater Accra Region",
+    "nameFr": "Région du Grand Accra"
+  },
+  "formattedAddress": "19 Patrice Lumumba Road, Airport Residential Area, Région du Grand Accra, Ghana",
+  "postcode": null,
+  "ghanaPost": "GA-183-8164",
+  "nearest": {
+    "id": "osm:n4270124248",
+    "name": "19 Patrice Lumumba Road",
+    "type": "address",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -0.187381,
+        5.603923
+      ]
+    },
+    "formattedAddress": "Airport Residential Area, Greater Accra",
+    "plusCode": "6CQXJR37+H29",
+    "country": "GH",
+    "distanceM": 49,
+    "attribution": "© OpenStreetMap contributors, N-Ways"
+  },
+  "attribution": "© OpenStreetMap contributors, N-Ways"
+}

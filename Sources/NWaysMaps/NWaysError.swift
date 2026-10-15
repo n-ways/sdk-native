@@ -2,20 +2,20 @@ import Foundation
 
 /// A request N-Ways refused or couldn't answer.
 ///
-/// - Key and quota errors, `{"error":{"code":403,"status":"PERMISSION_DENIED","reason":"…","message":"…"}}`,
-///   fill ``status`` and ``reason``.
-/// - API errors, `{"error":"…","code":"no_route"}`, fill ``code``.
+/// - Every `/maps/v1` error, `{"error":{"code":403,"status":"PERMISSION_DENIED","reason":"API_KEY_SERVICE_BLOCKED","message":"…"}}`,
+///   fills ``status`` and ``reason`` (NO_ROUTE, POSTCODE_UNKNOWN, LAT_LNG_REQUIRED, QUOTA_EXCEEDED…).
+/// - The older `{"error":"…","code":"no_route"}` shape (another host, an older server) fills ``code``.
 /// - A network failure has ``httpStatus`` 0 and the ``underlying`` error.
 ///
-/// Act on ``httpStatus``, ``reason`` and ``code``, never on ``message``'s words.
+/// Act on ``httpStatus`` and ``reason`` (or ``code``), never on ``message``'s words.
 public struct NWaysError: Error, LocalizedError, CustomStringConvertible, @unchecked Sendable {
     /// The HTTP status, or 0 when no answer came (network failure).
     public let httpStatus: Int
-    /// Key/quota errors: PERMISSION_DENIED, RESOURCE_EXHAUSTED, INVALID_ARGUMENT, UNAVAILABLE…
+    /// INVALID_ARGUMENT, UNAUTHENTICATED, PERMISSION_DENIED, NOT_FOUND, FAILED_PRECONDITION, RESOURCE_EXHAUSTED, UNAVAILABLE…
     public let status: String?
-    /// Key/quota errors: why, e.g. API_KEY_SERVICE_BLOCKED.
+    /// Why, in capitals: API_KEY_SERVICE_BLOCKED, NO_ROUTE, POSTCODE_UNKNOWN…
     public let reason: String?
-    /// API errors: a stable code such as no_route or postcode_unknown.
+    /// The older error shape's code (no_route…); nil for `/maps/v1` envelopes.
     public let code: String?
     public let message: String
     /// Seconds to wait before retrying, from Retry-After (429, 503).

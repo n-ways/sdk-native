@@ -1,0 +1,173 @@
+{
+  "routes": [
+    {
+      "distanceM": 1395,
+      "durationS": 228,
+      "staticDurationS": 228,
+      "trafficDelayS": 0,
+      "speedSource": "estimated",
+      "summary": "Admiralty Way and Awudu Ekpekha Boulevard",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            3.472352,
+            6.4474
+          ],
+          [
+            3.472352,
+            6.447802
+          ],
+          [
+            3.473565,
+            6.447802
+          ],
+          [
+            3.473999,
+            6.447799
+          ],
+          [
+            3.475998,
+            6.447807
+          ],
+          [
+            3.477692,
+            6.447813
+          ],
+          [
+            3.478327,
+            6.447813
+          ],
+          [
+            3.478328,
+            6.447606
+          ],
+          [
+            3.478331,
+            6.446765
+          ],
+          [
+            3.478339,
+            6.444765
+          ],
+          [
+            3.47834,
+            6.444478
+          ],
+          [
+            3.478344,
+            6.44353
+          ],
+          [
+            3.479162,
+            6.443523
+          ],
+          [
+            3.479771,
+            6.443513
+          ],
+          [
+            3.479795,
+            6.44389
+          ],
+          [
+            3.479797,
+            6.444003
+          ]
+        ]
+      },
+      "legs": [
+        {
+          "distanceM": 1395,
+          "durationS": 228
+        }
+      ],
+      "steps": [
+        {
+          "maneuver": "depart_left",
+          "instruction": "Drive north on Victoria Arobieke Street.",
+          "distanceM": 44,
+          "durationS": 6,
+          "streetNames": [
+            "Victoria Arobieke Street"
+          ],
+          "startIndex": 0,
+          "endIndex": 1
+        },
+        {
+          "maneuver": "right",
+          "instruction": "Turn right onto Admiralty Way.",
+          "distanceM": 661,
+          "durationS": 70,
+          "streetNames": [
+            "Admiralty Way"
+          ],
+          "startIndex": 1,
+          "endIndex": 6
+        },
+        {
+          "maneuver": "right",
+          "instruction": "Turn right onto Awudu Ekpekha Boulevard.",
+          "distanceM": 478,
+          "durationS": 91,
+          "streetNames": [
+            "Awudu Ekpekha Boulevard"
+          ],
+          "startIndex": 6,
+          "endIndex": 11
+        },
+        {
+          "maneuver": "left",
+          "instruction": "Turn left onto Itumi Ogbonna Road.",
+          "distanceM": 157,
+          "durationS": 39,
+          "streetNames": [
+            "Itumi Ogbonna Road"
+          ],
+          "startIndex": 11,
+          "endIndex": 13
+        },
+        {
+          "maneuver": "left",
+          "instruction": "Turn left.",
+          "distanceM": 54,
+          "durationS": 21,
+          "startIndex": 13,
+          "endIndex": 15
+        },
+        {
+          "maneuver": "arrive_right",
+          "instruction": "Your destination is on the right.",
+          "distanceM": 0,
+          "durationS": 0,
+          "startIndex": 15,
+          "endIndex": 15
+        }
+      ],
+      "country": "NG"
+    }
+  ],
+  "waypoints": [
+    {
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          3.472,
+          6.4474
+        ]
+      }
+    },
+    {
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          3.48,
+          6.444
+        ]
+      },
+      "postcode": "LA08A09DB10"
+    }
+  ],
+  "mode": "drive",
+  "attribution": "© OpenStreetMap contributors, N-Ways"
+}

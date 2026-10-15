@@ -38,7 +38,7 @@ struct ContentView: View {
         busy = true
         defer { busy = false }
         do {
-            let res = try await NWaysMaps.client.geocode("Allen Avenue", limit: 1, near: NWaysLatLng(lat: 6.6018, lng: 3.3515))
+            let res = try await NWaysMaps.client.geocode("Allen Avenue", near: NWaysLatLng(lat: 6.6018, lng: 3.3515), limit: 1)
             guard let first = res.results.first, let loc = first.location else {
                 status = "Nothing found"
                 return
@@ -48,7 +48,7 @@ struct ContentView: View {
             let pin = MLNPointAnnotation()
             pin.coordinate = loc.coordinate
             pin.title = first.name
-            pin.subtitle = first.context
+            pin.subtitle = first.formattedAddress
             map.removeAnnotations(map.annotations ?? [])
             map.addAnnotation(pin)
             map.setCenter(loc.coordinate, zoomLevel: 15, animated: true)

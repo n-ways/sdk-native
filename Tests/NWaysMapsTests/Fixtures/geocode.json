@@ -1,0 +1,86 @@
+{
+  "results": [
+    {
+      "id": "osm:w568367632",
+      "name": "Ikeja City Mall",
+      "type": "landmark",
+      "category": "shopping",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          3.357831,
+          6.61437
+        ]
+      },
+      "bbox": [
+        3.3563617,
+        6.6129463,
+        3.3592302,
+        6.6156852
+      ],
+      "formattedAddress": "Ikeja, Lagos",
+      "plusCode": "6FR5J975+P4W",
+      "country": "NG",
+      "distanceM": 22445,
+      "attribution": "© OpenStreetMap contributors, N-Ways"
+    },
+    {
+      "id": "place:ov:7c065f24-3cc2-4426-9163-a5a54e7e2860",
+      "name": "Ikeja City Mall",
+      "type": "business",
+      "category": "shop",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          3.333333,
+          6.583333
+        ]
+      },
+      "formattedAddress": "Ikeja, Lagos",
+      "plusCode": "6FR5H8MM+88P",
+      "country": "NG",
+      "distanceM": 21521,
+      "placeId": "ov:7c065f24-3cc2-4426-9163-a5a54e7e2860",
+      "attribution": "© OpenStreetMap contributors, N-Ways"
+    },
+    {
+      "id": "place:fsq:5203acca498eff786279e420",
+      "name": "Ikeja City Mall",
+      "type": "business",
+      "category": "shop",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          3.260958,
+          6.688621
+        ]
+      },
+      "formattedAddress": "Alimosho, Lagos",
+      "plusCode": "6FR5M7Q6+C9W",
+      "country": "NG",
+      "distanceM": 35538,
+      "placeId": "fsq:5203acca498eff786279e420",
+      "attribution": "© OpenStreetMap contributors, N-Ways"
+    },
+    {
+      "id": "place:ov:cadcb093-c022-4d06-b836-fe591c8477f5",
+      "name": "Skechers Ikeja City Mall",
+      "type": "business",
+      "category": "shop",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          3.35149,
+          6.60184
+        ]
+      },
+      "formattedAddress": "Ikeja, Lagos",
+      "plusCode": "6FR5J922+PHQ",
+      "country": "NG",
+      "distanceM": 21729,
+      "placeId": "ov:cadcb093-c022-4d06-b836-fe591c8477f5",
+      "attribution": "© OpenStreetMap contributors, N-Ways"
+    }
+  ],
+  "attribution": "© OpenStreetMap contributors, N-Ways"
+}

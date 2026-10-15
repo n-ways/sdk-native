@@ -1,0 +1,21 @@
+# macOS / Xcode
+.DS_Store
+*.xcuserstate
+xcuserdata/
+DerivedData/
+.build/
+.swiftpm/
+*.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/
+# Local secrets (API keys) — never commit
+Examples/ios/NWaysSample/Secrets.xcconfig
+.env
+.env.local
+
+# Android / Gradle
+.gradle/
+build/
+local.properties
+*.iml
+.idea/
+.kotlin/
+captures/

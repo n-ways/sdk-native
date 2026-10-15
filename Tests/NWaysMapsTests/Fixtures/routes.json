@@ -1,0 +1,20 @@
+{
+  "mode": "motorcycle",
+  "from": { "location": { "lat": 6.6018, "lng": 3.3515 } },
+  "to": { "location": { "lat": 6.4541, "lng": 3.3947 } },
+  "routes": [
+    {
+      "distanceM": 18420,
+      "durationS": 2310,
+      "trafficDelayS": 420,
+      "via": "Ikorodu Road",
+      "geometry": [[3.3515, 6.6018], [3.3521, 6.6011]],
+      "maneuvers": [
+        { "type": 1, "instruction": "Head south on Allen Avenue.", "distanceM": 350, "durationS": 60, "beginIndex": 0, "endIndex": 12 }
+      ],
+      "legs": [],
+      "tolls": { "gates": [], "costNGN": 0 }
+    }
+  ],
+  "tollsUnavoidable": false
+}

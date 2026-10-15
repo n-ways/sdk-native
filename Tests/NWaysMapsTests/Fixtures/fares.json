@@ -1,0 +1,12 @@
+{
+  "country": "NG",
+  "area": "lagos",
+  "currency": "NGN",
+  "distanceM": 9000,
+  "durationS": 1500,
+  "night": false,
+  "estimates": [
+    { "mode": "keke", "currency": "NGN", "low": 1500, "typical": 2000, "high": 2500, "basis": "seed", "text": "₦1,500–2,500", "typicalText": "₦2,000" }
+  ],
+  "notAllowed": []
+}

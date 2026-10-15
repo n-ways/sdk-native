@@ -1,6 +1,6 @@
 import Foundation
 import CoreLocation
-import MapLibre
+@_exported import MapLibre
 
 /// The map's look: N-Ways' light or dark streets style.
 public enum NWaysTheme: String, CaseIterable, Sendable {

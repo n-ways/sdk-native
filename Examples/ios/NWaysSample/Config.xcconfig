@@ -1,0 +1,9 @@
+// N-Ways sample build settings. The API key goes in Secrets.xcconfig next to this
+// file (git-ignored, never committed):
+//
+//     NWAYS_API_KEY = your-key-here
+//
+// Without it the app runs with the placeholder and the map answers 401.
+NWAYS_API_KEY = YOUR_API_KEY
+
+#include? "Secrets.xcconfig"

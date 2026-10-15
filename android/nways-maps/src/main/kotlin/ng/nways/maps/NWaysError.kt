@@ -11,21 +11,21 @@ import java.util.TimeZone
 /**
  * A request N-Ways refused or couldn't answer.
  *
- * - Key and quota errors: `{"error":{"code":403,"status":"PERMISSION_DENIED","reason":"…","message":"…"}}`
- *   fill [status] and [reason].
- * - API errors: `{"error":"…","code":"no_route"}` fill [code].
+ * - Every `/maps/v1` error: `{"error":{"code":403,"status":"PERMISSION_DENIED","reason":"API_KEY_SERVICE_BLOCKED","message":"…"}}`
+ *   fills [status] and [reason] (NO_ROUTE, POSTCODE_UNKNOWN, LAT_LNG_REQUIRED, QUOTA_EXCEEDED…).
+ * - The older `{"error":"…","code":"no_route"}` shape (another host, an older server) fills [code].
  * - A network failure has [httpStatus] 0 and the [cause].
  *
- * Act on [httpStatus], [reason] and [code], never on [message]'s words.
+ * Act on [httpStatus] and [reason] (or [code]), never on [message]'s words.
  */
 public class NWaysError(
     /** The HTTP status, or 0 when no answer came (network failure). */
     public val httpStatus: Int,
-    /** Key/quota errors: PERMISSION_DENIED, RESOURCE_EXHAUSTED, INVALID_ARGUMENT, UNAVAILABLE… */
+    /** INVALID_ARGUMENT, UNAUTHENTICATED, PERMISSION_DENIED, NOT_FOUND, FAILED_PRECONDITION, RESOURCE_EXHAUSTED, UNAVAILABLE… */
     public val status: String? = null,
-    /** Key/quota errors: why, e.g. API_KEY_SERVICE_BLOCKED. */
+    /** Why, in capitals: API_KEY_SERVICE_BLOCKED, NO_ROUTE, POSTCODE_UNKNOWN… */
     public val reason: String? = null,
-    /** API errors: a stable code such as no_route or postcode_unknown. */
+    /** The older error shape's code (no_route…); null for `/maps/v1` envelopes. */
     public val code: String? = null,
     message: String,
     /** Seconds to wait before retrying, from Retry-After (429, 503). */

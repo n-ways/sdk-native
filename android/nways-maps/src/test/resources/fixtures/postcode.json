@@ -1,0 +1,41 @@
+{
+  "code": "LA08A09DB09",
+  "display": "LA 08 A09 DB 09",
+  "components": {
+    "state": "LA",
+    "stateName": "Lagos",
+    "lga": "08",
+    "lgaName": "Eti-Osa",
+    "district": "A09",
+    "area": "DB",
+    "building": "09"
+  },
+  "location": {
+    "type": "Point",
+    "coordinates": [
+      3.4721,
+      6.4475
+    ]
+  },
+  "name": "Test House",
+  "address": "12 Admiralty Way, Lekki",
+  "buildingType": "house",
+  "entrances": [
+    {
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          3.47225,
+          6.44738
+        ]
+      },
+      "kind": "gate",
+      "verified": true
+    }
+  ],
+  "plusCode": "6FR5CFXC+2R5",
+  "country": "NG",
+  "source": "osm",
+  "estimated": false,
+  "attribution": "NIPOST postcodes; © OpenStreetMap contributors, N-Ways"
+}

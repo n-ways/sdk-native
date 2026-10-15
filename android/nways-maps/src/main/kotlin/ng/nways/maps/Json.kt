@@ -41,3 +41,20 @@ internal fun JsonElement?.lngLatPair(): NWaysLatLng? {
     val lat = (a[1] as? JsonPrimitive)?.doubleOrNull ?: return null
     return NWaysLatLng(lat, lng)
 }
+
+/** A GeoJSON Point (`{"type":"Point","coordinates":[lng,lat]}`), or a `{lat, lng}` object. */
+internal fun JsonElement?.point(): NWaysLatLng? {
+    val o = this as? JsonObject ?: return null
+    return o["coordinates"].lngLatPair() ?: o.latLng()
+}
+
+/** A GeoJSON LineString's coordinates, as points in order. */
+internal fun JsonElement?.line(): List<NWaysLatLng> {
+    val o = this as? JsonObject ?: return emptyList()
+    return o.arr("coordinates")?.mapNotNull { it.lngLatPair() }.orEmpty()
+}
+
+internal fun JsonObject.points(key: String): List<NWaysLatLng> = arr(key)?.mapNotNull { it.point() }.orEmpty()
+
+internal fun JsonObject.strings(key: String): List<String> =
+    arr(key)?.mapNotNull { (it as? JsonPrimitive)?.takeIf { p -> p.isString }?.content }.orEmpty()

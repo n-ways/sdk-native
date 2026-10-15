@@ -90,7 +90,7 @@ public object NWaysMaps {
         val l = lang.trim().lowercase()
         require(LANG.matches(l)) { "lang must be a language code like en or fr: $lang" }
         val b = normalizeBaseUrl(baseUrl).newBuilder()
-            .addPathSegments("maps/v1/styles")
+            .addPathSegments(NWaysPaths.STYLES)
             .addPathSegment("$styleId.json")
         if (l != "en") b.addQueryParameter("lang", l)
         return b.build().toString()

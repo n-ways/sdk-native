@@ -1,0 +1,48 @@
+{
+  "results": [
+    {
+      "id": "osm:w568367632",
+      "name": "Ikeja City Mall",
+      "type": "landmark",
+      "category": "shopping",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          3.357831,
+          6.61437
+        ]
+      },
+      "bbox": [
+        3.3563617,
+        6.6129463,
+        3.3592302,
+        6.6156852
+      ],
+      "formattedAddress": "Ikeja, Lagos",
+      "plusCode": "6FR5J975+P4W",
+      "country": "NG",
+      "distanceM": 22445,
+      "attribution": "© OpenStreetMap contributors, N-Ways"
+    },
+    {
+      "id": "place:ov:7c065f24-3cc2-4426-9163-a5a54e7e2860",
+      "name": "Ikeja City Mall",
+      "type": "business",
+      "category": "shop",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          3.333333,
+          6.583333
+        ]
+      },
+      "formattedAddress": "Ikeja, Lagos",
+      "plusCode": "6FR5H8MM+88P",
+      "country": "NG",
+      "distanceM": 21521,
+      "placeId": "ov:7c065f24-3cc2-4426-9163-a5a54e7e2860",
+      "attribution": "© OpenStreetMap contributors, N-Ways"
+    }
+  ],
+  "attribution": "© OpenStreetMap contributors, N-Ways"
+}

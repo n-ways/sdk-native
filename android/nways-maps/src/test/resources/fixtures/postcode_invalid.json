@@ -1,0 +1,8 @@
+{
+  "error": {
+    "code": 400,
+    "message": "That isn't a NIPOST postcode (like LA 08 A09 DB 09): invalid postcode: expected 11 characters like FC 02 A09 DB 09",
+    "reason": "POSTCODE_INVALID",
+    "status": "INVALID_ARGUMENT"
+  }
+}

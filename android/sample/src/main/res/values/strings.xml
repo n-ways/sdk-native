@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">N-Ways Maps sample</string>
+    <string name="toggle_theme">Light / dark</string>
+    <string name="geocode_allen">Geocode Allen Avenue</string>
+    <string name="no_key">Set nways.apiKey in android/local.properties</string>
+    <string name="no_results">Nothing found</string>
+</resources>

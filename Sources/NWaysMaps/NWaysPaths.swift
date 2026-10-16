@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 N-WAYS LIMITED
 import Foundation
 
 /// Every path the SDK calls on the N-Ways Maps Platform's stable partner API (`/maps/v1`),

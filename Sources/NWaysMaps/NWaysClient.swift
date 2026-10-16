@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 N-WAYS LIMITED
 import Foundation
 
 /// The N-Ways Maps Platform REST API (`/maps/v1`). Every call sends the API key and the app's bundle

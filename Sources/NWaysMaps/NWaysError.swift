@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 N-WAYS LIMITED
 import Foundation
 
 /// A request N-Ways refused or couldn't answer.

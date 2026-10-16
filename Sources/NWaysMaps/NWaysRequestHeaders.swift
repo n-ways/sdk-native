@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 N-WAYS LIMITED
 import Foundation
 
 /// Header names the N-Ways API reads (they match the partner key restrictions).

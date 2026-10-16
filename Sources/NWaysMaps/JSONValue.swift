@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 N-WAYS LIMITED
 import Foundation
 
 /// Any JSON value. Models keep the whole object they were read from in `raw`, so fields

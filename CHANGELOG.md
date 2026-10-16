@@ -2,7 +2,8 @@
 
 ## 1.0.0 — 2026-10-15 (not yet published)
 
-First version of the N-Ways Maps native SDKs.
+First version of the N-Ways Maps native SDKs. Open source under the Apache License 2.0 (`LICENSE`, `NOTICE`);
+map data stays © OpenStreetMap contributors (ODbL).
 
 ### Both platforms
 - N-Ways map styles on MapLibre Native: `streets-light` / `streets-dark`, light/dark theme, `en` / `fr` labels,

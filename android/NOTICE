@@ -1,0 +1,30 @@
+N-Ways Maps SDK
+Copyright 2026 N-WAYS LIMITED
+
+This product (the N-Ways Maps SDKs for Android, ng.nways:maps, and iOS, the
+NWaysMaps Swift package) is licensed under the Apache License, Version 2.0
+(see LICENSE).
+
+Third-party software
+--------------------
+
+The SDKs do not bundle third-party code. They depend on these libraries, each
+under its own licence:
+
+  MapLibre Native (Android: org.maplibre.gl:android-sdk; iOS: MapLibre via
+  maplibre-gl-native-distribution)
+                   BSD 2-Clause License, Copyright (c) 2021 MapLibre contributors
+                   https://github.com/maplibre/maplibre-native/blob/main/LICENSE.md
+  OkHttp (Android) Apache License 2.0, Copyright Square, Inc.
+  kotlinx.serialization and kotlinx.coroutines (Android)
+                   Apache License 2.0, Copyright JetBrains s.r.o. and Kotlin
+                   Programming Language contributors
+
+Map data
+--------
+
+The SDKs are software only. The maps and data they show come from N-Ways and
+are built on OpenStreetMap: © OpenStreetMap contributors, available under the
+Open Database License (ODbL) 1.0, https://www.openstreetmap.org/copyright. They
+are not covered by the Apache License. Keep the credit "N-Ways · © OpenStreetMap
+contributors" visible wherever the data is shown.

@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 N-WAYS LIMITED
 package ng.nways.maps
 
 import kotlinx.serialization.json.Json

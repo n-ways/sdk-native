@@ -83,7 +83,15 @@ publishing {
                 description.set("N-Ways maps, geocoding, places and routes on MapLibre Native.")
                 url.set("https://nways.ng/developers/")
                 licenses {
-                    license { name.set("UNLICENSED — all rights reserved, N-Ways") }
+                    license {
+                        name.set("Apache-2.0")
+                        url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+                        distribution.set("repo")
+                    }
+                }
+                organization {
+                    name.set("N-WAYS LIMITED")
+                    url.set("https://nways.ng")
                 }
             }
         }

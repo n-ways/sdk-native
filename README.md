@@ -120,4 +120,11 @@ the older `{"error":"…","code":"…"}` shape.) Retry only when `isRetryable` (
 
 ## Licence
 
-UNLICENSED — all rights reserved, N-Ways. See `LICENSE`.
+Both SDKs are licensed under the [Apache License, Version 2.0](LICENSE) (`Apache-2.0`), Copyright 2026 N-WAYS
+LIMITED; see [NOTICE](NOTICE) for the third-party libraries they depend on (MapLibre Native under BSD 2-Clause, OkHttp
+and kotlinx under Apache 2.0).
+
+The licence covers the code, not the maps and data it loads. N-Ways maps and data are built on OpenStreetMap,
+© OpenStreetMap contributors, available under the [Open Database License (ODbL)](https://www.openstreetmap.org/copyright),
+and keep that credit wherever they are shown (the SDKs keep it on the map). Calling the N-Ways APIs needs an API key
+and is governed by the [N-Ways Maps Platform terms](https://nways.ng/developers/terms).

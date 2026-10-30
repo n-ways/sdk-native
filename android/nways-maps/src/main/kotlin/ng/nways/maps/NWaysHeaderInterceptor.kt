@@ -13,6 +13,11 @@ public object NWaysHeaders {
     public const val ANDROID_CERT: String = "X-Android-Cert"
     public const val SDK: String = "X-NWays-Sdk"
     public const val SDK_VALUE: String = "android/" + NWaysMaps.SDK_VERSION
+    /** Startup Program credit: the app attestation session ([NWaysCredit]). */
+    public const val ATTESTATION: String = "X-NWays-Attestation"
+    /** Startup Program credit, server keys only: an opaque end-user ID (never personal data). */
+    public const val END_USER: String = "X-NWays-End-User"
+    public const val END_USER_COUNTRY: String = "X-NWays-End-User-Country"
 }
 
 /**
@@ -30,6 +35,7 @@ public class NWaysHeaderInterceptor(private val config: NWaysConfig) : Intercept
             .header(NWaysHeaders.SDK, NWaysHeaders.SDK_VALUE)
         config.packageName?.let { b.header(NWaysHeaders.ANDROID_PACKAGE, it) }
         config.certSha1?.let { b.header(NWaysHeaders.ANDROID_CERT, it) }
+        NWaysCredit.session()?.let { b.header(NWaysHeaders.ATTESTATION, it) }
         return chain.proceed(b.build())
     }
 

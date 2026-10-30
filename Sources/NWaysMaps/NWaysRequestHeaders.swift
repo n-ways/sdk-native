@@ -8,11 +8,17 @@ public enum NWaysHeaders {
     public static let iosBundleIdentifier = "X-Ios-Bundle-Identifier"
     public static let sdk = "X-NWays-Sdk"
     public static let sdkValue = "ios/" + NWaysMaps.sdkVersion
+    /// Startup Program credit: the app attestation session (``NWaysCredit``).
+    public static let attestation = "X-NWays-Attestation"
+    /// Startup Program credit, server keys only: an opaque end-user ID (never personal data).
+    public static let endUser = "X-NWays-End-User"
+    public static let endUserCountry = "X-NWays-End-User-Country"
 
     /// All headers the SDK adds, for configuration.
     public static func all(for configuration: NWaysConfiguration) -> [String: String] {
         var h = [apiKey: configuration.apiKey, sdk: sdkValue]
         if let b = configuration.bundleIdentifier, !b.isEmpty { h[iosBundleIdentifier] = b }
+        if let s = NWaysCredit.session { h[attestation] = s }
         return h
     }
 
@@ -35,7 +41,7 @@ public enum NWaysHeaders {
 
     /// Removes the SDK's headers (a redirect away from the N-Ways host).
     public static func strip(_ request: inout URLRequest) {
-        for k in [apiKey, iosBundleIdentifier, sdk] { request.setValue(nil, forHTTPHeaderField: k) }
+        for k in [apiKey, iosBundleIdentifier, sdk, attestation] { request.setValue(nil, forHTTPHeaderField: k) }
     }
 
     private static func port(of url: URL) -> Int? {

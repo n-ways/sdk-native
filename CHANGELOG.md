@@ -6,6 +6,10 @@ First version of the N-Ways Maps native SDKs. Open source under the Apache Licen
 map data stays © OpenStreetMap contributors (ODbL).
 
 ### Both platforms
+- Startup Program credit keys: `NWaysCredit.start()` attests the app once every 30 days (iOS App Attest;
+  Android hardware key attestation, Android 7+) and the SDK then sends the session as `X-NWays-Attestation`
+  on every N-Ways request (https://nways.ng/developers/startup-credit). `NWaysHeaders` names
+  `X-NWays-End-User` and `X-NWays-End-User-Country` for server calls.
 - N-Ways map styles on MapLibre Native: `streets-light` / `streets-dark`, light/dark theme, `en` / `fr` labels,
   configurable base URL (default `https://nways.ng`).
 - The API key (`X-NWays-Api-Key`), app identity and `X-NWays-Sdk` on every request to the N-Ways host — style,

@@ -6,14 +6,14 @@ send your API key and app identity with every request to N-Ways (and to nowhere 
 (the stable partner API at `/maps/v1`: geocoding, reverse geocoding, NIPOST postcodes, GhanaPost GPS
 addresses, autocomplete, address validation, places, routes, route matrices and fares).
 
-**Status: 1.0.0.** iOS: a public Swift package (this repository, tag `1.0.0`). Android: built by
-[JitPack](https://jitpack.io/#n-ways/sdk-native) from the tag (`com.github.n-ways.sdk-native:nways-maps:1.0.0`);
+**Status: 1.0.1.** iOS: a public Swift package (this repository, tag `1.0.1`). Android: built by
+[JitPack](https://jitpack.io/#n-ways/sdk-native) from the tag (`com.github.n-ways:sdk-native:1.0.1`);
 Maven Central (`ng.nways:maps`) follows once the namespace is verified. Every path the SDKs call is in one table, `NWaysPaths`, in each SDK. The partner API
 answers only while the owners' partner switch is on; until then every call is refused as an invalid key (401).
 
 | | Android | iOS |
 |---|---|---|
-| Package | `ng.nways:maps:1.0.0` (module `android/nways-maps`) | Swift package `NWaysMaps` (this repo's root) |
+| Package | `com.github.n-ways:sdk-native:1.0.1` on JitPack (`ng.nways:maps:1.0.1` from source; module `android/nways-maps`) | Swift package `NWaysMaps` (this repo's root) |
 | MapLibre | `org.maplibre.gl:android-sdk:11.13.5` | `maplibre-gl-native-distribution` 6.31.0 |
 | Minimum | Android 6.0 (API 23) | iOS 15 |
 | Identity headers | `X-Android-Package`, `X-Android-Cert` (SHA-1) | `X-Ios-Bundle-Identifier` |
@@ -27,11 +27,11 @@ In your app:
 
 ```kotlin
 repositories { google(); mavenCentral(); maven("https://jitpack.io") }
-dependencies { implementation("com.github.n-ways.sdk-native:nways-maps:1.0.0") }
+dependencies { implementation("com.github.n-ways:sdk-native:1.0.1") }
 ```
 
 (From source instead: `cd android && ./gradlew :nways-maps:publishToMavenLocal`, then `repositories { mavenLocal() }`
-and `implementation("ng.nways:maps:1.0.0")`.)
+and `implementation("ng.nways:maps:1.0.1")`.)
 
 Use:
 
@@ -61,8 +61,8 @@ Build and test: `cd android && ./gradlew :nways-maps:testDebugUnitTest :nways-ma
 
 ## iOS
 
-In Xcode, *File → Add Package Dependencies…* and enter `https://github.com/n-ways/sdk-native` (from 1.0.0); or in a
-Package.swift: `.package(url: "https://github.com/n-ways/sdk-native", from: "1.0.0")` with the product `NWaysMaps`.
+In Xcode, *File → Add Package Dependencies…* and enter `https://github.com/n-ways/sdk-native` (from 1.0.1); or in a
+Package.swift: `.package(url: "https://github.com/n-ways/sdk-native", from: "1.0.1")` with the product `NWaysMaps`.
 `import NWaysMaps` also gives you MapLibre's types.
 
 ```swift

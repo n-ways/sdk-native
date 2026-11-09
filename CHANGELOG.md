@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.1 (2026-11-09)
+
+- Published: the repository is public. iOS installs as a Swift package by URL; Android through JitPack
+  (`com.github.n-ways:sdk-native:1.0.1`). No code changes.
+
 ## 1.0.0 — 2026-10-15 (not yet published)
 
 First version of the N-Ways Maps native SDKs. Open source under the Apache License 2.0 (`LICENSE`, `NOTICE`);

@@ -1,9 +1,11 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
+import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    `maven-publish`
+    id("com.vanniktech.maven.publish") version "0.37.0"
 }
 
 group = "ng.nways"
@@ -42,12 +44,6 @@ android {
         // MapLibre is pinned to the 11.x line and OkHttp to the 4.x MapLibre 11 is built on.
         disable += "NewerVersionAvailable"
     }
-
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-        }
-    }
 }
 
 kotlin {
@@ -69,31 +65,44 @@ dependencies {
     testImplementation(libs.coroutines.test)
 }
 
-// Local publishing only (./gradlew :nways-maps:publishToMavenLocal).
-// Maven Central publishing is not set up: the owner decides when.
-publishing {
-    publications {
-        register<MavenPublication>("release") {
-            groupId = "ng.nways"
-            artifactId = "maps"
-            version = project.version.toString()
-            afterEvaluate { from(components["release"]) }
-            pom {
-                name.set("N-Ways Maps for Android")
-                description.set("N-Ways maps, geocoding, places and routes on MapLibre Native.")
-                url.set("https://nways.ng/developers/")
-                licenses {
-                    license {
-                        name.set("Apache-2.0")
-                        url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
-                        distribution.set("repo")
-                    }
-                }
-                organization {
-                    name.set("N-WAYS LIMITED")
-                    url.set("https://nways.ng")
-                }
+// Publishing: Maven Central (ng.nways:maps) through the Central Portal, signed; the
+// same publication goes to mavenLocal (./gradlew :nways-maps:publishToMavenLocal,
+// what JitPack runs). Credentials and the signing key live in ~/.gradle/gradle.properties
+// (mavenCentralUsername, mavenCentralPassword, signingInMemoryKey*), never here.
+//   ./gradlew :nways-maps:publishToMavenCentral   (automatic release once validated)
+mavenPublishing {
+    publishToMavenCentral(automaticRelease = true)
+    if (providers.gradleProperty("signingInMemoryKey").isPresent) signAllPublications()
+    coordinates("ng.nways", "maps", project.version.toString())
+    configure(AndroidSingleVariantLibrary(variant = "release", sourcesJar = true, publishJavadocJar = true))
+    pom {
+        name.set("N-Ways Maps for Android")
+        description.set("N-Ways maps of West Africa on MapLibre Native, with geocoding, postcodes, places and routes.")
+        url.set("https://nways.ng/developers/android-sdk")
+        inceptionYear.set("2026")
+        licenses {
+            license {
+                name.set("Apache-2.0")
+                url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
+                distribution.set("repo")
             }
+        }
+        organization {
+            name.set("N-WAYS LIMITED")
+            url.set("https://nways.ng")
+        }
+        developers {
+            developer {
+                id.set("n-ways")
+                name.set("N-WAYS LIMITED")
+                email.set("hello@nways.ng")
+                url.set("https://nways.ng")
+            }
+        }
+        scm {
+            url.set("https://github.com/n-ways/sdk-native")
+            connection.set("scm:git:https://github.com/n-ways/sdk-native.git")
+            developerConnection.set("scm:git:ssh://git@github.com/n-ways/sdk-native.git")
         }
     }
 }

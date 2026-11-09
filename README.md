@@ -23,7 +23,7 @@ store signs with, or the iOS bundle ID.
 
 ## Android
 
-Install from source: `cd android && ./gradlew :nways-maps:publishToMavenLocal`, then in your app:
+In your app:
 
 ```kotlin
 repositories { google(); mavenCentral(); maven("https://jitpack.io") }

@@ -1,0 +1,6 @@
+# JitPack builds the Android SDK from this repository's android/ project
+# (https://jitpack.io/#n-ways/sdk-native): com.github.n-ways.sdk-native:nways-maps:<tag>.
+jdk:
+  - openjdk17
+install:
+  - cd android && ./gradlew :nways-maps:publishToMavenLocal -x test --no-daemon

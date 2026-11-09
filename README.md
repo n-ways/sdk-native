@@ -6,8 +6,9 @@ send your API key and app identity with every request to N-Ways (and to nowhere 
 (the stable partner API at `/maps/v1`: geocoding, reverse geocoding, NIPOST postcodes, GhanaPost GPS
 addresses, autocomplete, address validation, places, routes, route matrices and fares).
 
-**Status: 1.0.0, not yet published.** There is no Maven Central artifact, CocoaPod or public Swift package yet:
-build from source as below. Every path the SDKs call is in one table, `NWaysPaths`, in each SDK. The partner API
+**Status: 1.0.0.** iOS: a public Swift package (this repository, tag `1.0.0`). Android: built by
+[JitPack](https://jitpack.io/#n-ways/sdk-native) from the tag (`com.github.n-ways.sdk-native:nways-maps:1.0.0`);
+Maven Central (`ng.nways:maps`) follows once the namespace is verified. Every path the SDKs call is in one table, `NWaysPaths`, in each SDK. The partner API
 answers only while the owners' partner switch is on; until then every call is refused as an invalid key (401).
 
 | | Android | iOS |
@@ -25,9 +26,12 @@ store signs with, or the iOS bundle ID.
 Install from source: `cd android && ./gradlew :nways-maps:publishToMavenLocal`, then in your app:
 
 ```kotlin
-repositories { mavenLocal() }
-dependencies { implementation("ng.nways:maps:1.0.0") }
+repositories { google(); mavenCentral(); maven("https://jitpack.io") }
+dependencies { implementation("com.github.n-ways.sdk-native:nways-maps:1.0.0") }
 ```
+
+(From source instead: `cd android && ./gradlew :nways-maps:publishToMavenLocal`, then `repositories { mavenLocal() }`
+and `implementation("ng.nways:maps:1.0.0")`.)
 
 Use:
 
@@ -57,8 +61,9 @@ Build and test: `cd android && ./gradlew :nways-maps:testDebugUnitTest :nways-ma
 
 ## iOS
 
-Install from source: in Xcode, *File → Add Package Dependencies… → Add Local…* and pick this folder
-(or `.package(path: "…/sdk-native")` in a Package.swift). `import NWaysMaps` also gives you MapLibre's types.
+In Xcode, *File → Add Package Dependencies…* and enter `https://github.com/n-ways/sdk-native` (from 1.0.0); or in a
+Package.swift: `.package(url: "https://github.com/n-ways/sdk-native", from: "1.0.0")` with the product `NWaysMaps`.
+`import NWaysMaps` also gives you MapLibre's types.
 
 ```swift
 import NWaysMaps

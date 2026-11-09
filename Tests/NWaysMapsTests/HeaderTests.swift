@@ -25,7 +25,7 @@ final class HeaderTests: XCTestCase {
         XCTAssertTrue(NWaysHeaders.decorate(&mine, configuration: config))
         XCTAssertEqual(mine.value(forHTTPHeaderField: "X-NWays-Api-Key"), "test-key-123")
         XCTAssertEqual(mine.value(forHTTPHeaderField: "X-Ios-Bundle-Identifier"), "ng.nways.sample")
-        XCTAssertEqual(mine.value(forHTTPHeaderField: "X-NWays-Sdk"), "ios/1.0.0")
+        XCTAssertEqual(mine.value(forHTTPHeaderField: "X-NWays-Sdk"), "ios/\(NWaysMaps.sdkVersion)")
 
         var other = URLRequest(url: URL(string: "https://tile.example.com/1/2/3.png")!)
         XCTAssertFalse(NWaysHeaders.decorate(&other, configuration: config))
@@ -58,7 +58,7 @@ final class HeaderTests: XCTestCase {
         let out = try XCTUnwrap(delegate.willSend?(tiles))
         XCTAssertEqual(out.value(forHTTPHeaderField: "X-NWays-Api-Key"), "test-key-123")
         XCTAssertEqual(out.value(forHTTPHeaderField: "X-Ios-Bundle-Identifier"), "ng.nways.sample")
-        XCTAssertEqual(out.value(forHTTPHeaderField: "X-NWays-Sdk"), "ios/1.0.0")
+        XCTAssertEqual(out.value(forHTTPHeaderField: "X-NWays-Sdk"), "ios/\(NWaysMaps.sdkVersion)")
 
         let elsewhere = NSMutableURLRequest(url: URL(string: "https://demotiles.maplibre.org/style.json")!)
         let out2 = try XCTUnwrap(delegate.willSend?(elsewhere))

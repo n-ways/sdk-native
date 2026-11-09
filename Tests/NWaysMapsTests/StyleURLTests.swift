@@ -43,10 +43,10 @@ final class StyleURLTests: XCTestCase {
         XCTAssertEqual(NWaysMaps.defaultCenter.latitude, 6.5244)
         XCTAssertEqual(NWaysMaps.defaultCenter.longitude, 3.3792)
         XCTAssertEqual(NWaysMaps.defaultZoom, 11)
-        XCTAssertEqual(NWaysMaps.westAfricaBounds.sw.longitude, -4.5)
-        XCTAssertEqual(NWaysMaps.westAfricaBounds.ne.longitude, 16.5)
-        XCTAssertEqual(NWaysMaps.westAfricaBounds.sw.latitude, 2.5)
-        XCTAssertEqual(NWaysMaps.westAfricaBounds.ne.latitude, 15.5)
+        XCTAssertEqual(NWaysMaps.westAfricaBounds.sw.longitude, -27)
+        XCTAssertEqual(NWaysMaps.westAfricaBounds.ne.longitude, 17.5)
+        XCTAssertEqual(NWaysMaps.westAfricaBounds.sw.latitude, -5.5)
+        XCTAssertEqual(NWaysMaps.westAfricaBounds.ne.latitude, 18.5)
         XCTAssertEqual(NWaysMaps.attribution, "© N-Ways · © OpenStreetMap contributors · Protomaps")
     }
 }

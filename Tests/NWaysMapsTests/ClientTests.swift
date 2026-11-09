@@ -91,7 +91,7 @@ final class ClientTests: XCTestCase {
         XCTAssertEqual(req.httpMethod, "GET")
         XCTAssertEqual(req.value(forHTTPHeaderField: "X-NWays-Api-Key"), "k")
         XCTAssertEqual(req.value(forHTTPHeaderField: "X-Ios-Bundle-Identifier"), "ng.nways.sample")
-        XCTAssertEqual(req.value(forHTTPHeaderField: "X-NWays-Sdk"), "ios/1.0.0")
+        XCTAssertEqual(req.value(forHTTPHeaderField: "X-NWays-Sdk"), "ios/\(NWaysMaps.sdkVersion)")
     }
 
     func testReverse() async throws {

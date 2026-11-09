@@ -46,7 +46,7 @@ class HeaderInterceptorTest {
         assertEquals("test-key-123", r.getHeader("X-NWays-Api-Key"))
         assertEquals("ng.nways.sample", r.getHeader("X-Android-Package"))
         assertEquals("AB:CD:EF", r.getHeader("X-Android-Cert"))
-        assertEquals("android/1.0.0", r.getHeader("X-NWays-Sdk"))
+        assertEquals("android/${BuildConfig.SDK_VERSION}", r.getHeader("X-NWays-Sdk"))
     }
 
     @Test

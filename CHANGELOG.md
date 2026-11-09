@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.2 (2026-11-09)
+
+- The default map bounds now cover every country N-Ways serves (Cabo Verde to Cameroon and Gabon); they used to stop
+  at Nigeria, Ghana, Benin and Togo, which kept maps of Senegal, Côte d’Ivoire, Guinea, Sierra Leone, Liberia,
+  Guinea-Bissau, The Gambia, Cabo Verde and southern Gabon from panning there. Android is also on Maven Central
+  (`ng.nways:maps`).
+
 ## 1.0.1 (2026-11-09)
 
 - Published: the repository is public. iOS installs as a Swift package by URL; Android through JitPack

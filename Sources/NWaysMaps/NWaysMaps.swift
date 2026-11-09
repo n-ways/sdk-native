@@ -36,7 +36,7 @@ public struct NWaysConfiguration: Sendable, Equatable {
 /// first map view, then use ``NWaysMapView`` (SwiftUI), ``NWaysUIMapView`` (UIKit),
 /// ``styleURL(theme:lang:)`` and ``client``.
 public enum NWaysMaps {
-    public static let sdkVersion = "1.0.0"
+    public static let sdkVersion = "1.0.2"
     public static let defaultBaseURL = URL(string: "https://nways.ng")!
     public static let styleStreetsLight = "streets-light"
     public static let styleStreetsDark = "streets-dark"
@@ -54,10 +54,10 @@ public enum NWaysMaps {
     public static let defaultCenter = CLLocationCoordinate2D(latitude: 6.5244, longitude: 3.3792)
     public static let defaultZoom: Double = 11
 
-    /// West Africa: Nigeria, Ghana, Benin and Togo with room around them.
+    /// Every country N-Ways covers, Cabo Verde to Cameroon and Gabon, with room around them.
     public static let westAfricaBounds = MLNCoordinateBounds(
-        sw: CLLocationCoordinate2D(latitude: 2.5, longitude: -4.5),
-        ne: CLLocationCoordinate2D(latitude: 15.5, longitude: 16.5)
+        sw: CLLocationCoordinate2D(latitude: -5.5, longitude: -27.0),
+        ne: CLLocationCoordinate2D(latitude: 18.5, longitude: 17.5)
     )
 
     private static let state = ConfigurationStore()

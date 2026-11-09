@@ -19,11 +19,11 @@ public object NWaysMapDefaults {
     public const val CENTER_LNG: Double = 3.3792
     public const val ZOOM: Double = 11.0
 
-    /** West Africa: Nigeria, Ghana, Benin and Togo with room around them. */
-    public const val WEST: Double = -4.5
-    public const val SOUTH: Double = 2.5
-    public const val EAST: Double = 16.5
-    public const val NORTH: Double = 15.5
+    /** Every country N-Ways covers, Cabo Verde to Cameroon and Gabon, with room around them. */
+    public const val WEST: Double = -27.0
+    public const val SOUTH: Double = -5.5
+    public const val EAST: Double = 17.5
+    public const val NORTH: Double = 18.5
 
     @JvmStatic
     public val center: LatLng get() = LatLng(CENTER_LAT, CENTER_LNG)
